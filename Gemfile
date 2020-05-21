@@ -71,7 +71,6 @@ group :utils do
 end
 
 gem 'rspec_junit_formatter', require: false, group: :ci
-
 # Documentation
 gem 'yard', require: false, group: :docs
 

@@ -1,0 +1,53 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+  <head data-hook="inside_head">
+    <%= render partial: 'spree/shared/head' %>
+  </head>
+  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+
+    <%= render partial: 'spree/shared/header' %>
+
+    <% #taxon_breadcrumbs(@taxon) %>
+    <% if !(controller_name == "products" && ["show"].include?(action_name)) %>
+      <% if @taxon.present? %>
+        <div id="content-subcategories">
+          <h4><%= @taxon.name %></h4>
+          <% @taxon.taxonomy.taxons.where(lft: @taxon.lft + 1).each do |taxon| %>
+            <div >
+              <a href="<%= seo_url(taxon) %>">
+                <img width="100px" height="100px" src="<%= taxon.icon_file_name.present? ? "/spree/taxons/#{taxon.id}/normal/#{taxon.icon_file_name}": "" %>"><br>
+                <%= taxon.name %>
+              </a>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="container">
+      <%= taxon_breadcrumbs(@taxon) if (controller_name == "products" && ["show"].include?(action_name))%>
+      <div id="sidebar"><%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %></div>
+      <div id="wrapper" class="row" data-hook>
+        <div id="content" class="columns <%= !content_for?(:sidebar) ? "sixteen" : "twelve omega" %>" data-hook>
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+
+        <%= yield :templates %>
+
+      </div>
+    </div>
+    <%= render partial: 'spree/shared/footer' %>
+    <a target="_blank" href="https://wa.me/573022575753?text=Hola, quisiera conocer más acerca de tus productos"><%= image_tag('icons/whatsapp-logo.png', class: 'img-whatsapp') %></a>
+    <script type="text/javascript">function add_chatinline(){var hccid=23971013;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
+    add_chatinline(); </script>
+    <% if ["user_sessions", "users", "orders", "checkout", "user_registrations", "user_passwords"].include?(controller_name) || (controller_name == "products" && ["show"].include?(action_name)) %>
+      <style>body{background-color: #FFFFFF !important}</style>
+    <% end %>
+
+  </body>
+</html>

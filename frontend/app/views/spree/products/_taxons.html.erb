@@ -1,0 +1,13 @@
+<% if !@product.taxons.blank? %>
+  <div id="taxon-crumbs" data-hook class="">
+    <div align="left" data-hook="product_taxons">
+      <h6 class="product-section-title"><%= t('spree.look_for_similar_items') %></h6>
+      <ul id="similar_items_by_taxon" data-hook>
+      <% @product.taxons.each do |taxon| %>
+        <%= render partial: 'spree/shared/products', locals: { products: taxon.products.where.not(id: @product.id).limit(10) } %>
+      <% end %>
+      </ul>
+    </div>
+
+  </div>
+<% end %>

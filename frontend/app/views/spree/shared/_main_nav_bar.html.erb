@@ -1,0 +1,11 @@
+<nav class="nav">
+  <%= link_to t('spree.home'), spree.root_path, class: "nav-item", "active-color": "orange" %>
+  <% max_level = 1 %>
+  <% @taxonomies = Spree::Taxonomy.includes(root: :children) if @taxonomies.blank? %>
+  <% @taxonomies.each do |taxonomy| %>
+    <% cache [I18n.locale, taxonomy, @taxon, max_level] do %>
+      <%= taxons_tree_only_links(taxonomy.root, @taxon, max_level) %>
+    <% end %>
+  <% end %>
+  <span class="nav-indicator"></span>
+</nav>

@@ -157,7 +157,7 @@ module Spree
     # @todo Remove this from the public API if possible.
     # @return [true] whether or not the address requires a zipcode to be valid
     def require_zipcode?
-      true
+      false
     end
 
     # This is set in order to preserve immutability of Addresses. Use #dup to create

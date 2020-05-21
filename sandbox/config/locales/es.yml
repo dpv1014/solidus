@@ -1,0 +1,51 @@
+es:
+  number:
+    currency:
+      format:
+        unit: '$'
+  spree:
+    selected_payment_method: Metodo de pago seleccionado
+    payments_list: Listado de pagos disponibles a través de PayU
+    no_authentication_methods_found: Sin metodos de autenticación
+    social_authentication_methods: Redes sociales para autenticación
+    new_social_method: Nueva red social
+    social_provider: Proveedor
+    social_api_key: Api key
+    social_api_secret: Api secret
+    environment: Enviroment
+    yes: Si
+    no: No
+    back_to_authentication_methods_list: Regresar
+    edit_social_method: Editar
+    minimize_menu: Minimizar
+    modify_stock_count: Modificar candidad del stock
+    character_limit: Limite de caracteres
+    name_contains: Nombre contiene
+    view_product: Ver producto
+    admin_login: Login
+    filter: Filtro
+    payment: Pago
+    admin:
+      users:
+        edit:
+          regenerate_key: Regenerar key
+          clear_key: Limpiar key
+          api_access: Acceso a la api
+      store_credits:
+        memo: Comentarios
+      tab:
+        zones: Zonas
+    actions:
+      retry: Reintentar
+
+  time:
+    formats:
+      solidus:
+        long: "%Y-%m-%d %H:%M:%S"
+        short: "%Y-%m-%d %H:%M:%S"
+  views:
+    pagination:
+      next: Siguiente
+      previous: Anterior
+      first: Primera
+      last: Última

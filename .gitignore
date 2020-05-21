@@ -8,7 +8,6 @@
 .project
 .ruby-version
 doc
-Gemfile.lock
 Gemfile-custom
 log
 pkg
